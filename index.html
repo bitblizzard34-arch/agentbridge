@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgentBridge — Your AI agents. Under your control.</title>
+  <meta name="description" content="AgentBridge is a secure control plane for AI agents running on your own workstation." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="AgentBridge home">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2563ff"/>
+              <stop offset="1" stop-color="#06b6d4"/>
+            </linearGradient>
+          </defs>
+          <path d="M32 4 54 16v32L32 60 10 48V16z" fill="url(#g)"/>
+          <path d="M16 38c5-8 11-12 16-12s11 4 16 12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+          <path d="M20 38v8M32 26v20M44 38v8" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="20" cy="38" r="3.5" fill="#fff"/>
+          <circle cx="32" cy="24" r="3.5" fill="#fff"/>
+          <circle cx="44" cy="38" r="3.5" fill="#fff"/>
+        </svg>
+        <span class="brand-word"><strong>Agent</strong><span>Bridge</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#product">Product</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#security">Security</a>
+        <a href="#console">Console</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-ghost" data-scroll="#console">Open Demo</button>
+        <button class="btn btn-primary" data-scroll="#product">Get Started</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section-pad">
+        <div class="hero-copy">
+          <div class="eyebrow">UNIFIED AGENT CONTROL PLANE</div>
+          <h1>Control AI Agents<br><span>From Anywhere.</span></h1>
+          <p class="hero-text">AgentBridge connects your phone and browser to AI agents running on your own workstation — without turning your computer into a remote desktop.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-lg" data-scroll="#console">Launch Demo</button>
+            <button class="btn btn-secondary btn-lg" data-scroll="#architecture">View Architecture</button>
+          </div>
+          <div class="hero-badges">
+            <span>✓ Runs on your workstation</span>
+            <span>✓ Human-in-the-loop approvals</span>
+            <span>✓ Model-agnostic by design</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="flow-stage">
+            <div class="flow-node device-node">
+              <div class="node-icon">▣</div>
+              <strong>Web / Mobile</strong>
+              <small>Control plane</small>
+            </div>
+            <div class="flow-line"><span></span></div>
+            <div class="flow-node relay-node">
+              <div class="node-icon">◈</div>
+              <strong>Secure Relay</strong>
+              <small>Auth · Routing · Presence</small>
+            </div>
+            <div class="flow-line"><span></span></div>
+            <div class="flow-node workstation-node">
+              <div class="node-icon">⌘</div>
+              <strong>Workstation</strong>
+              <small>Execution plane</small>
+            </div>
+          </div>
+          <div class="agent-row">
+            <div class="agent-pill"><span class="dot codex"></span>Codex</div>
+            <div class="agent-pill"><span class="dot claude"></span>Claude</div>
+            <div class="agent-pill"><span class="dot gemini"></span>Gemini</div>
+            <div class="agent-pill"><span class="dot custom"></span>Custom</div>
+          </div>
+          <div class="orb orb-a"></div>
+          <div class="orb orb-b"></div>
+        </div>
+      </section>
+
+      <section id="product" class="section-pad feature-section">
+        <div class="section-heading">
+          <div class="eyebrow">PRODUCT</div>
+          <h2>One place to manage every agent.</h2>
+          <p>Tasks, sessions, approvals, workstations and execution visibility in one consistent interface.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">◎</div>
+            <h3>Multi-Agent Control</h3>
+            <p>Manage different providers and agents behind one unified protocol and dashboard.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">✓</div>
+            <h3>Human Approval</h3>
+            <p>Pause sensitive tool actions and approve or reject them from the control plane.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">▦</div>
+            <h3>Local Execution</h3>
+            <p>Files, Git, browser tools and agent execution remain on your own workstation.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">◫</div>
+            <h3>Full Visibility</h3>
+            <p>See session state, tool events, diffs, logs and task history without screen streaming.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="architecture" class="section-pad architecture-section">
+        <div class="section-heading left">
+          <div class="eyebrow">ARCHITECTURE</div>
+          <h2>Simple layers. Clear boundaries.</h2>
+          <p>AgentBridge separates the control plane from execution so that your workstation stays the place where real work happens.</p>
+        </div>
+
+        <div class="architecture-stack">
+          <div class="layer layer-1">
+            <div class="layer-index">01</div>
+            <div><strong>Control Plane</strong><span>Web App · Mobile App · Session UI · Approval UI</span></div>
+          </div>
+          <div class="layer-arrow">↓ HTTPS / WSS</div>
+          <div class="layer layer-2">
+            <div class="layer-index">02</div>
+            <div><strong>Secure Relay</strong><span>Authentication · Presence · Routing · Signaling</span></div>
+          </div>
+          <div class="layer-arrow">↓ Outbound secure channel</div>
+          <div class="layer layer-3">
+            <div class="layer-index">03</div>
+            <div><strong>Workstation Daemon</strong><span>Session Manager · Approval Engine · Workspace Policy · Secret Store</span></div>
+          </div>
+          <div class="layer-arrow">↓ AgentBridge Protocol</div>
+          <div class="layer layer-4">
+            <div class="layer-index">04</div>
+            <div><strong>Agent Adapters</strong><span>Codex · Claude · Gemini · Custom</span></div>
+          </div>
+          <div class="layer-arrow">↓ Scoped local tools</div>
+          <div class="layer layer-5">
+            <div class="layer-index">05</div>
+            <div><strong>Local Tools</strong><span>Files · Shell Tools · Git · Browser · MCP</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="security" class="section-pad security-section">
+        <div class="security-panel">
+          <div class="security-copy">
+            <div class="eyebrow">SECURITY BY DESIGN</div>
+            <h2>Your machine. Your rules.</h2>
+            <p>The product is designed around explicit authorization and bounded execution, not unrestricted remote administration.</p>
+          </div>
+          <div class="security-grid">
+            <div class="security-item"><span class="security-badge ok">✓</span><div><strong>Workspace Allowlist</strong><small>Agents only access explicitly authorized project directories.</small></div></div>
+            <div class="security-item"><span class="security-badge ok">✓</span><div><strong>Approval Required</strong><small>Sensitive actions can pause for explicit user approval.</small></div></div>
+            <div class="security-item"><span class="security-badge no">×</span><div><strong>No Remote Desktop</strong><small>No desktop video stream or mouse-and-keyboard takeover.</small></div></div>
+            <div class="security-item"><span class="security-badge no">×</span><div><strong>No Unrestricted Remote Shell</strong><small>Commands stay scoped to agent workflows and policy enforcement.</small></div></div>
+            <div class="security-item"><span class="security-badge lock">◆</span><div><strong>Secrets Stay Local</strong><small>Provider credentials stay on the workstation wherever possible.</small></div></div>
+            <div class="security-item"><span class="security-badge lock">◆</span><div><strong>Auditable Sessions</strong><small>Sessions, approvals and execution events can be traced.</small></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="console" class="section-pad console-section">
+        <div class="section-heading left">
+          <div class="eyebrow">INTERACTIVE MOCK CONSOLE</div>
+          <h2>Initial control-panel framework.</h2>
+          <p>This prototype shows the core information architecture for the real app: workstations, agents, sessions, approvals and activity.</p>
+        </div>
+
+        <div class="app-shell">
+          <aside class="sidebar">
+            <div class="mini-brand">
+              <svg class="brand-mark small" viewBox="0 0 64 64" aria-hidden="true">
+                <defs>
+                  <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563ff"/><stop offset="1" stop-color="#06b6d4"/></linearGradient>
+                </defs>
+                <path d="M32 4 54 16v32L32 60 10 48V16z" fill="url(#g2)"/>
+                <path d="M16 38c5-8 11-12 16-12s11 4 16 12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                <path d="M20 38v8M32 26v20M44 38v8" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+              <span>AgentBridge</span>
+            </div>
+            <button class="side-link active" data-panel="overview">Overview</button>
+            <button class="side-link" data-panel="agents">Agents</button>
+            <button class="side-link" data-panel="sessions">Sessions</button>
+            <button class="side-link" data-panel="approvals">Approvals <span class="badge-count">2</span></button>
+            <button class="side-link" data-panel="workstations">Workstations</button>
+            <div class="sidebar-spacer"></div>
+            <button class="side-link" data-panel="settings">Settings</button>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <div>
+                <h3 id="panelTitle">Overview</h3>
+                <p id="panelSubtitle">Monitor your workstations and active agent tasks.</p>
+              </div>
+              <div class="top-actions">
+                <span class="status-chip online">● Workstation online</span>
+                <button class="btn btn-primary small-btn" id="newTaskBtn">+ New Task</button>
+              </div>
+            </div>
+
+            <div class="panel active" id="panel-overview">
+              <div class="metric-grid">
+                <div class="metric-card"><small>Active Agents</small><strong>3 / 5</strong><span class="trend">+1 today</span></div>
+                <div class="metric-card"><small>Running Tasks</small><strong>4</strong><span class="trend">2 awaiting input</span></div>
+                <div class="metric-card"><small>Pending Approvals</small><strong>2</strong><span class="warn">Review now</span></div>
+                <div class="metric-card"><small>Workstation</small><strong>dev-01</strong><span class="trend">Connected</span></div>
+              </div>
+
+              <div class="console-grid">
+                <div class="card agent-card-list">
+                  <div class="card-head"><strong>Agents</strong><span>Live</span></div>
+                  <div class="agent-item"><span class="agent-avatar blue">C</span><div><strong>Code Agent</strong><small>Codex · Running</small></div><span class="status-chip running">Running</span></div>
+                  <div class="agent-item"><span class="agent-avatar violet">R</span><div><strong>Research Agent</strong><small>Claude · Idle</small></div><span class="status-chip idle">Idle</span></div>
+                  <div class="agent-item"><span class="agent-avatar cyan">G</span><div><strong>Analysis Agent</strong><small>Gemini · Running</small></div><span class="status-chip running">Running</span></div>
+                </div>
+
+                <div class="card approvals-card">
+                  <div class="card-head"><strong>Pending approvals</strong><span>2</span></div>
+                  <div class="approval-item"><div><strong>Run package install</strong><small>Code Agent · pnpm install</small></div><div class="approval-actions"><button class="approve">Approve</button><button class="reject">Reject</button></div></div>
+                  <div class="approval-item"><div><strong>Write project files</strong><small>Code Agent · 4 files changed</small></div><div class="approval-actions"><button class="approve">Approve</button><button class="reject">Reject</button></div></div>
+                </div>
+              </div>
+
+              <div class="card terminal-card">
+                <div class="terminal-head"><span>Agent activity</span><span class="status-chip running">● Live</span></div>
+                <div class="terminal-body" id="terminalBody">
+                  <div><span class="time">16:41:08</span> <span class="sys">[system]</span> Connected to workstation dev-01.</div>
+                  <div><span class="time">16:41:10</span> <span class="agent">[codex]</span> Session initialized for workspace /projects/agentbridge.</div>
+                  <div><span class="time">16:41:13</span> <span class="tool">[tool]</span> Reading repository structure...</div>
+                  <div><span class="time">16:41:17</span> <span class="agent">[codex]</span> Planning implementation steps.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" id="panel-agents">
+              <div class="card table-card">
+                <div class="card-head"><strong>Configured Agents</strong><span>5 total</span></div>
+                <table>
+                  <thead><tr><th>Name</th><th>Provider</th><th>Status</th><th>Workspace</th></tr></thead>
+                  <tbody>
+                    <tr><td>Code Agent</td><td>Codex</td><td><span class="status-chip running">Running</span></td><td>AgentBridge</td></tr>
+                    <tr><td>Research Agent</td><td>Claude</td><td><span class="status-chip idle">Idle</span></td><td>Research</td></tr>
+                    <tr><td>Analysis Agent</td><td>Gemini</td><td><span class="status-chip running">Running</span></td><td>Analytics</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="panel" id="panel-sessions">
+              <div class="card list-card">
+                <div class="card-head"><strong>Recent Sessions</strong><span>Today</span></div>
+                <div class="session-row"><div><strong>Implement initial web console</strong><small>Codex · 18 min ago</small></div><span class="status-chip running">Running</span></div>
+                <div class="session-row"><div><strong>Research relay architecture</strong><small>Claude · 1 hr ago</small></div><span class="status-chip idle">Completed</span></div>
+                <div class="session-row"><div><strong>Review UI system</strong><small>Gemini · 2 hrs ago</small></div><span class="status-chip idle">Completed</span></div>
+              </div>
+            </div>
+
+            <div class="panel" id="panel-approvals">
+              <div class="card list-card">
+                <div class="card-head"><strong>Approval Queue</strong><span>Human-in-the-loop</span></div>
+                <div class="approval-big"><div><span class="risk medium">Medium</span><h4>Run package install</h4><p>Agent requests permission to execute <code>pnpm install</code> inside the authorized workspace.</p></div><div class="approval-actions"><button class="approve">Approve</button><button class="reject">Reject</button></div></div>
+                <div class="approval-big"><div><span class="risk low">Low</span><h4>Write project files</h4><p>Agent requests permission to create and modify four files under the AgentBridge project directory.</p></div><div class="approval-actions"><button class="approve">Approve</button><button class="reject">Reject</button></div></div>
+              </div>
+            </div>
+
+            <div class="panel" id="panel-workstations">
+              <div class="workstation-grid">
+                <div class="card workstation-card"><span class="machine-icon">▣</span><div><strong>dev-01</strong><small>Windows 11 · Online</small><p>3 active agents · AgentBridge workspace allowed</p></div><span class="status-chip running">Online</span></div>
+                <div class="card workstation-card"><span class="machine-icon">▣</span><div><strong>macbook-pro</strong><small>macOS · Offline</small><p>No active sessions</p></div><span class="status-chip idle">Offline</span></div>
+              </div>
+            </div>
+
+            <div class="panel" id="panel-settings">
+              <div class="settings-grid">
+                <div class="card"><div class="card-head"><strong>Workspace Policy</strong></div><label>Allowed workspace</label><div class="input-like">D:\\Projects\\AgentBridge</div></div>
+                <div class="card"><div class="card-head"><strong>Provider Status</strong></div><div class="provider-row"><span>Codex</span><span class="status-chip running">Connected</span></div><div class="provider-row"><span>Claude</span><span class="status-chip idle">Not configured</span></div><div class="provider-row"><span>Gemini</span><span class="status-chip idle">Not configured</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-pad final-cta">
+        <div>
+          <div class="eyebrow">AGENTBRIDGE</div>
+          <h2>Your agents. Your workstation. Your control.</h2>
+          <p>This is the first visual and information-architecture baseline for the product website and control console.</p>
+        </div>
+        <button class="btn btn-primary btn-lg" data-scroll="#console">Explore Console</button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="brand footer-brand">
+        <svg class="brand-mark small" viewBox="0 0 64 64" aria-hidden="true">
+          <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563ff"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+          <path d="M32 4 54 16v32L32 60 10 48V16z" fill="url(#g3)"/>
+          <path d="M16 38c5-8 11-12 16-12s11 4 16 12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+          <path d="M20 38v8M32 26v20M44 38v8" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-word"><strong>Agent</strong><span>Bridge</span></span>
+      </div>
+      <span>Initial concept build · 2026</span>
+    </footer>
+  </div>
+
+  <div class="modal" id="taskModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <div class="modal-head"><strong>New Agent Task</strong><button class="modal-close" data-close-modal>×</button></div>
+      <label>Agent</label>
+      <select id="agentSelect"><option>Code Agent · Codex</option><option>Research Agent · Claude</option><option>Analysis Agent · Gemini</option></select>
+      <label>Task</label>
+      <textarea id="taskInput" rows="5" placeholder="Describe what you want the agent to do..."></textarea>
+      <div class="modal-actions"><button class="btn btn-secondary" data-close-modal>Cancel</button><button class="btn btn-primary" id="createTaskBtn">Create Task</button></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
